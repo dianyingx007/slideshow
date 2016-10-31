@@ -12,7 +12,7 @@
   height: 500px;
   position: relative; }
 
-.left_button {
+#left_button {
   background-image: url(../img/left.png);
   background-repeat: no-repeat;
   background-position: center;
@@ -23,7 +23,7 @@
   left: 0px;
   z-index: 4; }
 
-.right_button {
+#right_button {
   background-image: url(../img/right.png);
   background-repeat: no-repeat;
   background-position: center;

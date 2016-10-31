@@ -20,7 +20,7 @@ $img_def_w:520px;//默认图片宽度
     position: relative;
 }
 
-.left_button {
+#left_button {
     background: {
         image:$left_bg;
         repeat:no-repeat;
@@ -34,7 +34,7 @@ $img_def_w:520px;//默认图片宽度
     z-index: 4;
 }
 
-.right_button {
+#right_button {
     background: {
         image:$right_bg;
         repeat:no-repeat;
