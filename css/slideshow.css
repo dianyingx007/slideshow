@@ -35,47 +35,47 @@
   z-index: 4; }
 
 .slider {
-  list-style-type: none; }
-  .slider img {
-    position: absolute;
-    transform: translate(-50%, 0); }
-  .slider:nth-child(1) img {
+  list-style-type: none;
+  position: absolute;
+  transform: translate(-50%, 0);
+  overflow: hidden; }
+  .slider:nth-child(1) {
     width: 520px;
     height: 500px;
     left: 50%;
     top: 0;
     z-index: 3; }
-  .slider:nth-child(2) img {
+  .slider:nth-child(2) {
     width: 468px;
     height: 450px;
     left: 60%;
     top: 5%;
     z-index: 2; }
-  .slider:nth-child(3) img {
+  .slider:nth-child(3) {
     width: 416px;
     height: 400px;
     left: 70%;
     top: 10%;
     z-index: 1; }
-  .slider:nth-child(4) img {
+  .slider:nth-child(4) {
     width: 364px;
     height: 350px;
     left: 80%;
     top: 15%;
     z-index: 0; }
-  .slider:nth-child(5) img {
+  .slider:nth-child(5) {
     width: 364px;
     height: 350px;
     left: 20%;
     top: 15%;
     z-index: 0; }
-  .slider:nth-child(6) img {
+  .slider:nth-child(6) {
     width: 416px;
     height: 400px;
     left: 30%;
     top: 10%;
     z-index: 1; }
-  .slider:nth-child(7) img {
+  .slider:nth-child(7) {
     width: 468px;
     height: 450px;
     left: 40%;
