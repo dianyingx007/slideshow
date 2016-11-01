@@ -28,7 +28,6 @@ window.onload=function(){
 	}
 	
 	function animation(flag){
-		var time=300;//动画总时间
 		//flag等于0表示向左，1表示向右
 		if(flag===0){
 			for(var i=0;i<7;i++){
