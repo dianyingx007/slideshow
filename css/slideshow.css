@@ -12,6 +12,10 @@
   height: 500px;
   position: relative; }
 
+.sliders_list {
+  width: 1000px;
+  height: 500px; }
+
 #left_button {
   background-image: url(../img/left.png);
   background-repeat: no-repeat;

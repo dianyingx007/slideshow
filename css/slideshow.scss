@@ -20,6 +20,11 @@ $img_def_w:520px;//默认图片宽度
     position: relative;
 }
 
+.sliders_list {
+    width: 1000px;
+    height: 500px;
+}
+
 #left_button {
     background: {
         image:$left_bg;

@@ -16,56 +16,48 @@ window.onload=function(){
 	}
 	initial();
 	
+	function go(dom,heightc,widthc,leftc,topc,zIndexc,indexc){
+		//dom表示操作的dom对象
+		//后面的参数(以c结尾)都为改变量
+		dom.style.height=parseInt(dom.style.height)+heightc+'px';
+		dom.style.width=parseInt(dom.style.width)+widthc+'px';
+		dom.style.left=parseInt(dom.style.left)+leftc+'%';
+		dom.style.top=parseInt(dom.style.top)+topc+'%';
+		dom.style.zIndex=parseInt(dom.style.zIndex)+zIndexc;
+		dom.setAttribute("index",parseInt(dom.getAttribute("index"))+indexc);
+	}
+	
 	function animation(flag){
+		var time=300;//动画总时间
 		//flag等于0表示向左，1表示向右
 		if(flag===0){
 			for(var i=0;i<7;i++){
 				if(list[i].getAttribute("index")>4){
-					list[i].style.height=parseInt(list[i].style.height)+50+'px';
-					list[i].style.width=parseInt(list[i].style.width)+52+'px';
-					list[i].style.left=parseInt(list[i].style.left)-10+'%';
-					list[i].style.top=parseInt(list[i].style.top)-5+'%';
-					list[i].style.zIndex=parseInt(list[i].style.zIndex)+1;
-					list[i].setAttribute("index",parseInt(list[i].getAttribute("index"))-1);
+					go(list[i],50,52,-10,-5,1,-1);
 				}else if(list[i].getAttribute("index")>1){
-					list[i].style.height=parseInt(list[i].style.height)-50+'px';
-					list[i].style.width=parseInt(list[i].style.width)-52+'px';
-					list[i].style.left=parseInt(list[i].style.left)-10+'%';
-					list[i].style.top=parseInt(list[i].style.top)+5+'%';
-					list[i].style.zIndex=parseInt(list[i].style.zIndex)-1;
-					list[i].setAttribute("index",parseInt(list[i].getAttribute("index"))-1);
+					go(list[i],-50,-52,-10,5,-1,-1);
 				}else {
-					list[i].style.left='80%';
-					list[i].setAttribute("index",7);
+					go(list[i],0,0,60,0,0,6);
 				}
 			}
 		}else{
 			for(var i=0;i<7;i++){
 				if(list[i].getAttribute("index")<4){
-					list[i].style.height=parseInt(list[i].style.height)+50+'px';
-					list[i].style.width=parseInt(list[i].style.width)+52+'px';
-					list[i].style.left=parseInt(list[i].style.left)+10+'%';
-					list[i].style.top=parseInt(list[i].style.top)-5+'%';
-					list[i].style.zIndex=parseInt(list[i].style.zIndex)+1;
-					list[i].setAttribute("index",parseInt(list[i].getAttribute("index"))+1);
+					go(list[i],50,52,10,-5,1,1);
 				}else if(list[i].getAttribute("index")<7){
-					list[i].style.height=parseInt(list[i].style.height)-50+'px';
-					list[i].style.width=parseInt(list[i].style.width)-52+'px';
-					list[i].style.left=parseInt(list[i].style.left)+10+'%';
-					list[i].style.top=parseInt(list[i].style.top)+5+'%';
-					list[i].style.zIndex=parseInt(list[i].style.zIndex)-1;
-					list[i].setAttribute("index",parseInt(list[i].getAttribute("index"))+1);
+					go(list[i],-50,-52,10,5,-1,1);
 				}else {
-					list[i].style.left='20%';
-					list[i].setAttribute("index",1);
+					go(list[i],0,0,-60,0,0,-6);
 				}
 			}
 		}
 	}
-	leftbut.onclick=function(){
+	leftbut.onclick=function(e){
 		animation(0);
+		e.stopPropagation();
 	}
-	rightbut.onclick=function(){
+	rightbut.onclick=function(e){
 		animation(1);
+		e.stopPropagation();
 	}
 }
