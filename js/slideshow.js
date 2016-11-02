@@ -19,13 +19,22 @@ window.onload=function(){
 	function go(dom,heightc,widthc,leftc,topc,zIndexc,indexc){
 		//dom表示操作的dom对象
 		//后面的参数(以c结尾)都为改变量
+		
 		dom.style.height=parseInt(dom.style.height)+heightc+'px';
 		dom.style.width=parseInt(dom.style.width)+widthc+'px';
 		dom.style.left=parseInt(dom.style.left)+leftc+'%';
 		dom.style.top=parseInt(dom.style.top)+topc+'%';
+		//moveonestep(dom,heightc,widthc,leftc,topc);
 		dom.style.zIndex=parseInt(dom.style.zIndex)+zIndexc;
 		dom.setAttribute("index",parseInt(dom.getAttribute("index"))+indexc);
 	}
+	
+	/*function moveonestep(dom,heighto,widtho,lefto,topo){
+		dom.style.height=parseInt(dom.style.height)+heighto+'px';
+		dom.style.width=parseInt(dom.style.width)+widtho+'px';
+		dom.style.left=parseInt(dom.style.left)+lefto+'%';
+		dom.style.top=parseInt(dom.style.top)+topo+'%';
+	}*/
 	
 	function animation(flag){
 		//flag等于0表示向左，1表示向右
