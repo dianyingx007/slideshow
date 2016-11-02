@@ -25,24 +25,22 @@ window.onload=function(){
 		var step=10;//动画分成多少步
 		var time=300;//动画总时间
 		
+		//moveonestep控制变量初始化
 		heightc/=step;
 		widthc/=step;
 		leftc/=step;
 		topc/=step;
 		dom.step=step;
 		dom.onetime=time/step;
-		/*dom.style.height=parseInt(dom.style.height)+heightc+'px';
-		dom.style.width=parseInt(dom.style.width)+widthc+'px';
-		dom.style.left=parseInt(dom.style.left)+leftc+'%';
-		dom.style.top=parseInt(dom.style.top)+topc+'%';*/
 		moveonestep(dom,heightc,widthc,leftc,topc);
+		
 		dom.style.zIndex=parseInt(dom.style.zIndex)+zIndexc;
 		dom.setAttribute("index",parseInt(dom.getAttribute("index"))+indexc);
 	}
 	
 	function moveonestep(dom,heighto,widtho,lefto,topo){
 		dom.style.height=parseFloat(dom.style.height)+heighto+'px';
-		dom.style.width=parseFloat(dom.style.width)+widtho+'px';
+		dom.style.width=parseFloat(dom.style.width)+widtho+'px';//发现问题：不能用parseInt，会转换为整数
 		dom.style.left=parseFloat(dom.style.left)+lefto+'%';
 		dom.style.top=parseFloat(dom.style.top)+topo+'%';
 		dom.step--;
@@ -86,15 +84,20 @@ window.onload=function(){
 	leftbut.onclick=function(e){
 		if(moving===0){
 			animation(0);
-			e.stopPropagation();
 		}
 	}
 	rightbut.onclick=function(e){
 		if(moving==0){
 			animation(1);
-			e.stopPropagation();
 		}
 	}
 	
-	var timer=setInterval(leftbut.onclick,1500);
+	var timer=setInterval(leftbut.onclick,2000);//自动播放
+	var sliders=document.getElementsByClassName('sliders_main')[0];
+	sliders.onmouseenter=function(){
+		clearInterval(timer);
+	}
+	sliders.onmouseleave=function(){
+		timer=setInterval(leftbut.onclick,2000);
+	}
 }
