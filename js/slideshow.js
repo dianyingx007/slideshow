@@ -95,4 +95,6 @@ window.onload=function(){
 			e.stopPropagation();
 		}
 	}
+	
+	var timer=setInterval(leftbut.onclick,1500);
 }
