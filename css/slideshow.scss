@@ -1,8 +1,9 @@
 $left_bg:url(../img/left.png);//左按钮背景图
 $right_bg:url(../img/right.png);//右按钮背景图
-$img_def_h:500px;//默认图片高度，注：中央的图大小
-$img_def_w:520px;//默认图片宽度
-
+$img_def_h:700px;//默认图片高度，注：中央的图大小
+$img_def_w:550px;//默认图片宽度
+$def_h:700px;//默认整个模块高度
+$def_w:1000px;//默认整个模块宽度
 * {
     padding: 0;
     margin: 0;
@@ -10,19 +11,20 @@ $img_def_w:520px;//默认图片宽度
 }
 
 .container {
-    width: 1000px;
+    width: $def_w;
     margin: 0 auto;
+    margin-top: 2px;
 }
 
 .sliders_main {
-    width: 1000px;
-    height: 500px;
+    width: $def_w;
+    height: $def_h;
     position: relative;
 }
 
 .sliders_list {
-    width: 1000px;
-    height: 500px;
+    width: $def_w;
+    height: $def_h;
 }
 
 #left_button {
@@ -32,7 +34,7 @@ $img_def_w:520px;//默认图片宽度
         position: center;
     };
     width:200px;
-    height: 500px;
+    height: $def_h;
     position: absolute;
     top: 0;
     left: 0px;
@@ -46,7 +48,7 @@ $img_def_w:520px;//默认图片宽度
         position: center;
     };
     width:200px;
-    height: 500px;
+    height: $def_h;
     position: absolute;
     top: 0;
     right: 0px;

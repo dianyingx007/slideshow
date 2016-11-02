@@ -8,7 +8,7 @@ window.onload=function(){
 		var index;
 		for(var i=0;i<7;i++){
 			index=parseInt(list[i].getAttribute("index"));
-			list[i].style.height=50*(10-Math.abs(index-4))+'px';
+			list[i].style.height=70*(10-Math.abs(index-4))+'px';
 			list[i].style.width=55*(10-Math.abs(index-4))+'px';
 			list[i].style.left=(index+1)*10+'%';
 			list[i].style.top=Math.abs(index-4)*5+'%';
@@ -62,9 +62,9 @@ window.onload=function(){
 		if(flag===0){
 			for(var i=0;i<7;i++){
 				if(list[i].getAttribute("index")>4){
-					go(list[i],50,52,-10,-5,1,-1);
+					go(list[i],70,55,-10,-5,1,-1);
 				}else if(list[i].getAttribute("index")>1){
-					go(list[i],-50,-52,-10,5,-1,-1);
+					go(list[i],-70,-55,-10,5,-1,-1);
 				}else {
 					go(list[i],0,0,60,0,0,6);
 				}
@@ -72,9 +72,9 @@ window.onload=function(){
 		}else{
 			for(var i=0;i<7;i++){
 				if(list[i].getAttribute("index")<4){
-					go(list[i],50,52,10,-5,1,1);
+					go(list[i],70,55,10,-5,1,1);
 				}else if(list[i].getAttribute("index")<7){
-					go(list[i],-50,-52,10,5,-1,1);
+					go(list[i],-70,-55,10,5,-1,1);
 				}else {
 					go(list[i],0,0,-60,0,0,-6);
 				}
