@@ -3,7 +3,36 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>焦点图轮播控件</title>
+		<style>
+			#container{
+				width: 1000px;
+				overflow: hidden;
+				position: relative;
+			}
+			#list{
+				width: 6000px;
+				position: relative;
+			}
+			#list img{
+				width: 1000px;
+				float: left;
+			}
+		</style>
 	</head>
 	<body>
+		<div id="container">
+			<div id="list" style="left: -1000px;">
+				<img src="img/4.jpg" />
+				<img src="img/1.jpg" />
+				<img src="img/2.jpg" />
+				<img src="img/3.jpg" />
+				<img src="img/4.jpg" />
+				<img src="img/1.jpg" />
+			</div>
+			<div id="button">
+				<img src="img/left.png" />
+				<img src="img/right.png" />
+			</div>
+		</div>
 	</body>
 </html>

@@ -2,8 +2,8 @@
 
 ##层叠式焦点图轮播
 
-index.html slideshow3d.scss slideshow3d.js
+文件：index.html slideshow3d.scss slideshow3d.js
 
 ##普通焦点图轮播
 
-index.html slideshow.css slideshow.js
+文件：index.html slideshow.css slideshow.js
