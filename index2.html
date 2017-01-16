@@ -4,10 +4,19 @@
 		<meta charset="UTF-8">
 		<title>焦点图轮播控件</title>
 		<style>
+			* {
+				box-sizing: border-box;
+			}
+			.clearboth:after{
+				content: "";
+				display: block;
+				clear:both ;
+			}
 			#container{
 				width: 1000px;
 				overflow: hidden;
 				position: relative;
+				margin: 0 auto;
 			}
 			#list{
 				width: 6000px;
@@ -17,22 +26,54 @@
 				width: 1000px;
 				float: left;
 			}
+			#button {
+				height: 100%;
+				width: 100%;
+				position: absolute;
+				top: 0;
+			}
+			#button_left {
+				height: 100%;
+				width: 20%;
+				float: left;
+				position: relative;
+			}
+			#button_right {
+				height: 100%;
+				width: 20%;
+				float: right;
+				position: relative;
+			}
+			#button img{
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				margin-top: -36px;
+				margin-left: -36px;
+			}
+			
 		</style>
 	</head>
 	<body>
 		<div id="container">
-			<div id="list" style="left: -1000px;">
+			<div id="list" class="clearboth" style="left: -1000px;">
 				<img src="img/4.jpg" />
-				<img src="img/1.jpg" />
+				<img src="img/1.jpg"  class="current"/>
 				<img src="img/2.jpg" />
 				<img src="img/3.jpg" />
 				<img src="img/4.jpg" />
 				<img src="img/1.jpg" />
 			</div>
 			<div id="button">
-				<img src="img/left.png" />
-				<img src="img/right.png" />
+				<div id="button_left">
+					<img src="img/left.png" />
+				</div>
+				<div id="button_right">
+					<img src="img/right.png" />
+				</div>
 			</div>
 		</div>
+		<script src="js/jquery-1.11.1.js"></script><!--为了兼容IE8-->
+		<script src="js/slideshow.js"></script>
 	</body>
 </html>
