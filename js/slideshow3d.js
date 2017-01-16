@@ -83,16 +83,16 @@ window.onload=function(){
 	}
 	leftbut.onclick=function(e){
 		if(moving===0){
-			animation(0);
+			animation(1);
 		}
 	}
 	rightbut.onclick=function(e){
 		if(moving==0){
-			animation(1);
+			animation(0);
 		}
 	}
 	
-	var timer=setInterval(leftbut.onclick,2000);//自动播放
+	var timer=setInterval(rightbut.onclick,2000);//自动播放
 	var sliders=document.getElementsByClassName('sliders_main')[0];
 	sliders.onmouseenter=function(){
 		clearInterval(timer);
