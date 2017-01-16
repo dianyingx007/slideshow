@@ -7,6 +7,9 @@
 			* {
 				box-sizing: border-box;
 			}
+			a{
+				text-decoration: none;
+			}
 			.clearboth:after{
 				content: "";
 				display: block;
@@ -26,30 +29,61 @@
 				width: 1000px;
 				float: left;
 			}
-			#button {
+			#buttons {
+				z-index: 3;
+				height: 20px;
+				width: 80px;
+				position: absolute;
+				bottom: 20px;
+				left: 50%;
+				margin-left: -40px;
+			}
+			#buttons span {
+				cursor: pointer;
+				float: left;
+				border: 1px solid #fff;
+				width: 15px;
+				height: 15px;
+				border-radius: 50%;
+				background: #333;
+				margin-right: 5px;
+			}
+			#buttons .button_on {
+				background: orange;
+			}
+			.arrow_div{
+				cursor: pointer;
+				display: none;
+				width: 20%;
 				height: 100%;
-				width: 100%;
 				position: absolute;
 				top: 0;
+				z-index: 2;
 			}
-			#button_left {
-				height: 100%;
-				width: 20%;
-				float: left;
-				position: relative;
+			.arrow_div.left{
+				left: 0px;
 			}
-			#button_right {
-				height: 100%;
-				width: 20%;
-				float: right;
-				position: relative;
+			.arrow_div.right{
+				right: 0px;
 			}
-			#button img{
+			#container:hover .arrow_div{
+				display: block;
+			}
+			.arrow {
+				line-height: 50px;
+				text-align: center;
+				font-size: 36px;
+				font-weight: 700;
+				width: 50px;
+				height: 50px;
 				position: absolute;
 				top: 50%;
-				left: 50%;
-				margin-top: -36px;
-				margin-left: -36px;
+				right: 50%;
+				margin-top: -25px;
+				margin-right: -25px;
+				background-color: rgba(0,0,0,0.5);
+				color: #fff;
+				border-radius: 50%;
 			}
 			
 		</style>
@@ -64,13 +98,17 @@
 				<img src="img/4.jpg" />
 				<img src="img/1.jpg" />
 			</div>
-			<div id="button">
-				<div id="button_left">
-					<img src="img/left.png" />
-				</div>
-				<div id="button_right">
-					<img src="img/right.png" />
-				</div>
+			<div id="buttons">
+				<span index="1" class="button_on"></span>
+				<span index="2"></span>
+				<span index="3"></span>
+				<span index="4"></span>
+			</div>
+			<div class="left arrow_div">
+				<a href="javascript:;" class="arrow" id="arrow_left">&lt;</a>
+			</div>
+			<div class="right arrow_div">
+				<a href="javascript:;" class="arrow" id="arrow_right">&gt;</a>
 			</div>
 		</div>
 		<script src="js/jquery-1.11.1.js"></script><!--为了兼容IE8-->
