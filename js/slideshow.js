@@ -4,7 +4,7 @@ $(document).ready(function(){
 	var buttons=$('#buttons span');
 	var arrow_left=$('#arrow_left');
 	var arrow_right=$('#arrow_right');
-	var pic_width=$('#list img').innerWidth();
+	var pic_width=$('.list_img').innerWidth();
 	var ani_flag=0;/*判断是否正在运行动画*/
 	var index=1;/*存放当前的图片序号*/
 	

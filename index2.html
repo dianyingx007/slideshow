@@ -6,6 +6,9 @@
 		<style>
 			* {
 				box-sizing: border-box;
+				border: 0;
+				margin: 0;
+				padding: 0;
 			}
 			a{
 				text-decoration: none;
@@ -25,9 +28,14 @@
 				width: 6000px;
 				position: relative;
 			}
-			#list img{
+			.list_img{
 				width: 1000px;
+				height: 500px;
 				float: left;
+				background-size: cover;
+				background-position: 50% 50%;
+				background-repeat: no-repeat;
+				background-color: rgba(233,233,233,.9);
 			}
 			#buttons {
 				z-index: 3;
@@ -89,14 +97,15 @@
 		</style>
 	</head>
 	<body>
+		<div style="margin-top: 20px;"></div>
 		<div id="container">
 			<div id="list" class="clearboth" style="left: -1000px;">
-				<img src="img/4.jpg" />
-				<img src="img/1.jpg"  class="current"/>
-				<img src="img/2.jpg" />
-				<img src="img/3.jpg" />
-				<img src="img/4.jpg" />
-				<img src="img/1.jpg" />
+				<div class="list_img" style="background-image: url(img/4.jpg);"></div>
+				<div class="list_img current" style="background-image: url(img/1.jpg);"></div>
+				<div class="list_img" style="background-image: url(img/2.jpg);"></div>
+				<div class="list_img" style="background-image: url(img/3.jpg);"></div>
+				<div class="list_img" style="background-image: url(img/4.jpg);"></div>
+				<div class="list_img" style="background-image: url(img/1.jpg);"></div>
 			</div>
 			<div id="buttons">
 				<span index="1" class="button_on"></span>
