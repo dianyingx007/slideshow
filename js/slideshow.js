@@ -7,7 +7,10 @@ $(document).ready(function(){
 			buttons:$('#buttons span'),/*图片对应的每个按钮*/
 			pre:$('#arrow_left'),/*前一个图片*/
 			next:$('#arrow_right'),/*后一个图片*/
-			pic_width:1000/*图片的宽度*/
+			pic_width:1000,/*图片的宽度*/
+			num:2,/*图片数量*/
+			time:3000,/*自动播放的间隔时间*/
+			speed:500/*图片切换速度*/
 		};
 		var params = $.extend({},defaults,option || {});
 		var ani_flag=0;/*判断是否正在运行动画*/
@@ -17,7 +20,7 @@ $(document).ready(function(){
 			if(ani_flag===0){
 				changeButton();
 				if(index===1){
-					index=4;
+					index=params['num'];
 				}else {
 					index-=1;
 				}
@@ -28,7 +31,7 @@ $(document).ready(function(){
 		function move_right(){
 			if(ani_flag===0){
 				changeButton();
-				if(index===4){
+				if(index===params['num']){
 					index=1;
 				}else {
 					index+=1;
@@ -40,7 +43,7 @@ $(document).ready(function(){
 		function animation(move_step){
 			ani_flag=1;
 			var step=10;/*分多少步演示动画*/
-			var time=500;/*动画一共多少时间*/
+			var time=params['speed'];/*动画一共多少时间*/
 			
 			var onestep=move_step/step;
 			var animationid=setInterval(function(){
@@ -48,11 +51,11 @@ $(document).ready(function(){
 				step--;
 				if(step===0){
 					clearInterval(animationid);
-					
-					if(params['list'].css('left')==='-5000px'){
-						params['list'].css('left','-1000px');
+
+					if(params['list'].css('left')===-(params['num']+1)*params['pic_width']+'px'){
+						params['list'].css('left',-params['pic_width']+'px');
 					}else if(params['list'].css('left')==='0px'){
-						params['list'].css('left','-4000px');
+						params['list'].css('left',-params['num']*params['pic_width']+'px');
 					}/*首尾页循环*/
 					
 					ani_flag=0;
@@ -82,12 +85,12 @@ $(document).ready(function(){
 		}
 		
 		/*以下是自动播放功能*/
-		var timer=setInterval(move_right,3000);
+		var timer=setInterval(move_right,params['time']);
 		params['container'].on('mouseenter',function(){
 			clearInterval(timer);
 		});/*鼠标在图片上面时，停止播放*/
 		params['container'].on('mouseleave',function(){
-			timer=setInterval(move_right,3000);
+			timer=setInterval(move_right,params['time']);
 		});
 	}
 
@@ -100,6 +103,7 @@ $(document).ready(function(){
 		buttons:$('#buttons span'),
 		pre:$('#arrow_left'),
 		next:$('#arrow_right'),
-		pic_width:1000
+		pic_width:1000,
+		num:4
 	});
 });
