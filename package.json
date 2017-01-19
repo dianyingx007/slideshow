@@ -1,0 +1,17 @@
+{
+  "name": "navmenu",
+  "version": "1.0.0",
+  "description": "navmenu",
+  "main": "gulpfile.js",
+  "scripts": {
+    "dev": "gulp",
+    "sync": "gulp sync"
+  },
+  "author": "danny",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.18.6",
+    "gulp": "^3.9.1",
+    "socket.io": "^1.7.2"
+  }
+}

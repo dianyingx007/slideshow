@@ -1,126 +1,28 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="UTF-8">
-		<title>焦点图轮播控件</title>
-		<style>
-			* {
-				box-sizing: border-box;
-				border: 0;
-				margin: 0;
-				padding: 0;
-			}
-			a{
-				text-decoration: none;
-			}
-			.clearboth:after{
-				content: "";
-				display: block;
-				clear:both ;
-			}
-			#container{
-				width: 1000px;
-				overflow: hidden;
-				position: relative;
-				margin: 0 auto;
-			}
-			#list{
-				width: 6000px;
-				position: relative;
-			}
-			.list_img{
-				width: 1000px;
-				height: 500px;
-				float: left;
-				background-size: cover;
-				background-position: 50% 50%;
-				background-repeat: no-repeat;
-				background-color: rgba(233,233,233,.9);
-			}
-			#buttons {
-				z-index: 3;
-				height: 20px;
-				width: 80px;
-				position: absolute;
-				bottom: 20px;
-				left: 50%;
-				margin-left: -40px;
-			}
-			#buttons span {
-				cursor: pointer;
-				float: left;
-				border: 1px solid #fff;
-				width: 15px;
-				height: 15px;
-				border-radius: 50%;
-				background: #333;
-				margin-right: 5px;
-			}
-			#buttons .button_on {
-				background: orange;
-			}
-			.arrow_div{
-				cursor: pointer;
-				display: none;
-				width: 20%;
-				height: 100%;
-				position: absolute;
-				top: 0;
-				z-index: 2;
-			}
-			.arrow_div.left{
-				left: 0px;
-			}
-			.arrow_div.right{
-				right: 0px;
-			}
-			#container:hover .arrow_div{
-				display: block;
-			}
-			.arrow {
-				line-height: 50px;
-				text-align: center;
-				font-size: 36px;
-				font-weight: 700;
-				width: 50px;
-				height: 50px;
-				position: absolute;
-				top: 50%;
-				right: 50%;
-				margin-top: -25px;
-				margin-right: -25px;
-				background-color: rgba(0,0,0,0.5);
-				color: #fff;
-				border-radius: 50%;
-			}
-			
-		</style>
+		<meta charset="utf-8" />
+		<title>层叠式焦点图片轮播控件</title>
+		<link rel="stylesheet" href="css/slideshow3d.css"/>
 	</head>
 	<body>
-		<div style="margin-top: 20px;"></div>
-		<div id="container">
-			<div id="list" class="clearboth" style="left: -1000px;">
-				<div class="list_img" style="background-image: url(img/4.jpg);"></div>
-				<div class="list_img current" style="background-image: url(img/1.jpg);"></div>
-				<div class="list_img" style="background-image: url(img/2.jpg);"></div>
-				<div class="list_img" style="background-image: url(img/3.jpg);"></div>
-				<div class="list_img" style="background-image: url(img/4.jpg);"></div>
-				<div class="list_img" style="background-image: url(img/1.jpg);"></div>
-			</div>
-			<div id="buttons">
-				<span index="1" class="button_on"></span>
-				<span index="2"></span>
-				<span index="3"></span>
-				<span index="4"></span>
-			</div>
-			<div class="left arrow_div">
-				<a href="javascript:;" class="arrow" id="arrow_left">&lt;</a>
-			</div>
-			<div class="right arrow_div">
-				<a href="javascript:;" class="arrow" id="arrow_right">&gt;</a>
+		<div class="container">
+			<div class="sliders_main">
+				<div id="left_button"></div>
+				<div id="right_button"></div>
+				<ul class="sliders_list">
+					<!--index表示从左到右图片的位置-->
+					<li class="slider" index="4"><img src="img/1.jpg" width="100%"/></li>
+					<li class="slider" index="5"><img src="img/2.jpg" width="100%"/></li>
+					<li class="slider" index="6"><img src="img/3.jpg" width="100%"/></li>
+					<li class="slider" index="7"><img src="img/4.jpg" width="100%"/></li>
+					<li class="slider" index="1"><img src="img/1.jpg" width="100%"/></li>
+					<li class="slider" index="2"><img src="img/2.jpg" width="100%"/></li>
+					<li class="slider" index="3"><img src="img/3.jpg" width="100%"/></li>
+				</ul>
+				
 			</div>
 		</div>
-		<script src="js/jquery-1.11.1.js"></script><!--为了兼容IE8-->
-		<script src="js/slideshow.js"></script>
+		<script src="js/slideshow3d.js"></script>
 	</body>
 </html>

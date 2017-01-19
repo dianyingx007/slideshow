@@ -1,87 +1,105 @@
 $(document).ready(function(){
-	var container=$('#container');
-	var list=$('#list');
-	var buttons=$('#buttons span');
-	var arrow_left=$('#arrow_left');
-	var arrow_right=$('#arrow_right');
-	var pic_width=$('.list_img').innerWidth();
-	var ani_flag=0;/*判断是否正在运行动画*/
-	var index=1;/*存放当前的图片序号*/
-	
-	function move_left(){
-		if(ani_flag===0){
-			changeButton();
-			if(index===1){
-				index=4;
-			}else {
-				index-=1;
+	/*封装的函数*/
+	function slideshow(option){
+		var defaults = {
+			container:$('#container'),/*整个控件的层，当鼠标移动到上面时，会停止自动播放*/
+			list:$('#list'),/*整个图片层*/
+			buttons:$('#buttons span'),/*图片对应的每个按钮*/
+			pre:$('#arrow_left'),/*前一个图片*/
+			next:$('#arrow_right'),/*后一个图片*/
+			pic_width:1000/*图片的宽度*/
+		};
+		var params = $.extend({},defaults,option || {});
+		var ani_flag=0;/*判断是否正在运行动画*/
+		var index=1;/*存放当前的图片序号*/
+
+		function move_left(){
+			if(ani_flag===0){
+				changeButton();
+				if(index===1){
+					index=4;
+				}else {
+					index-=1;
+				}
+				changeButton();
+				animation(params['pic_width']);
 			}
-			changeButton();
-			animation(pic_width);
 		}
-	}
-	function move_right(){
-		if(ani_flag===0){
-			changeButton();
-			if(index===4){
-				index=1;
-			}else {
-				index+=1;
+		function move_right(){
+			if(ani_flag===0){
+				changeButton();
+				if(index===4){
+					index=1;
+				}else {
+					index+=1;
+				}
+				changeButton();
+				animation(-params['pic_width']);
 			}
-			changeButton();
-			animation(-pic_width);
 		}
-	}
-	function animation(move_step){
-		ani_flag=1;
-		var step=10;/*分多少步演示动画*/
-		var time=500;/*动画一共多少时间*/
+		function animation(move_step){
+			ani_flag=1;
+			var step=10;/*分多少步演示动画*/
+			var time=500;/*动画一共多少时间*/
+			
+			var onestep=move_step/step;
+			var animationid=setInterval(function(){
+				params['list'].css('left',parseInt(params['list'].css('left'))+onestep+'px');
+				step--;
+				if(step===0){
+					clearInterval(animationid);
+					
+					if(params['list'].css('left')==='-5000px'){
+						params['list'].css('left','-1000px');
+					}else if(params['list'].css('left')==='0px'){
+						params['list'].css('left','-4000px');
+					}/*首尾页循环*/
+					
+					ani_flag=0;
+				}
+			},time/step);
+		}
+		params['pre'].on('click',move_left);
+		params['next'].on('click',move_right);
 		
-		var onestep=move_step/step;
-		var animationid=setInterval(function(){
-			list.css('left',parseInt(list.css('left'))+onestep+'px');
-			step--;
-			if(step===0){
-				clearInterval(animationid);
-				
-				if(list.css('left')==='-5000px'){
-					list.css('left','-1000px');
-				}else if(list.css('left')==='0px'){
-					list.css('left','-4000px');
-				}/*首尾页循环*/
-				
-				ani_flag=0;
-			}
-		},time/step);
-	}
-	arrow_left.on('click',move_left);
-	arrow_right.on('click',move_right);
-	
-	/*下排的button按钮响应改变*/
-	function changeButton(){
-		$(buttons[index-1]).toggleClass("button_on");
-		/*jQuery中选择出来的数组，在用[i]选择其中之一时，其结果为DOM对象，不是jQuery对象*/
-	}
-	
-	/*添加button按钮点击的事件，跳转到相应的图片*/
-	for(var i=0;i<buttons.length;i++){
-		$(buttons[i]).on('click',function(){
-			if(!$(this).hasClass("button_on")){
-				var myindex=parseInt($(this).attr('index'));/*获取的属性是字符串类型，需要转换*/
-				changeButton();
-				animation((index-myindex)*pic_width);
-				index=myindex;
-				changeButton();
-			}
+		/*下排的button按钮响应改变*/
+		function changeButton(){
+			$(params['buttons'][index-1]).toggleClass("button_on");
+			/*jQuery中选择出来的数组，在用[i]选择其中之一时，其结果为DOM对象，不是jQuery对象*/
+		}
+		
+		/*添加button按钮点击的事件，跳转到相应的图片*/
+		for(var i=0;i<params['buttons'].length;i++){
+			$(params['buttons'][i]).on('click',function(){
+				if(!$(this).hasClass("button_on")){
+					var myindex=parseInt($(this).attr('index'));/*获取的属性是字符串类型，需要转换*/
+					changeButton();
+					animation((index-myindex)*params['pic_width']);
+					index=myindex;
+					changeButton();
+				}
+			});
+		}
+		
+		/*以下是自动播放功能*/
+		var timer=setInterval(move_right,3000);
+		params['container'].on('mouseenter',function(){
+			clearInterval(timer);
+		});/*鼠标在图片上面时，停止播放*/
+		params['container'].on('mouseleave',function(){
+			timer=setInterval(move_right,3000);
 		});
 	}
-	
-	/*以下是自动播放功能*/
-	var timer=setInterval(move_right,3000);
-	container.on('mouseenter',function(){
-		clearInterval(timer);
-	});/*鼠标在图片上面时，停止播放*/
-	container.on('mouseleave',function(){
-		timer=setInterval(move_right,3000);
+
+
+
+	/*调用封装的函数*/
+	slideshow({
+		container:$('#container'),
+		list:$('#list'),
+		buttons:$('#buttons span'),
+		pre:$('#arrow_left'),
+		next:$('#arrow_right'),
+		pic_width:1000
 	});
 });
