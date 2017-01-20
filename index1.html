@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
+
 	<head>
 		<meta charset="UTF-8">
-		<title>焦点图轮播控件</title>
+		<title>水平焦点图轮播控件</title>
 		<style>
 			* {
 				box-sizing: border-box;
@@ -10,33 +11,39 @@
 				margin: 0;
 				padding: 0;
 			}
-			a{
+			
+			a {
 				text-decoration: none;
 			}
-			.clearboth:after{
+			
+			.clearboth:after {
 				content: "";
 				display: block;
-				clear:both ;
+				clear: both;
 			}
-			#container{
+			
+			#container {
 				width: 1000px;
 				overflow: hidden;
 				position: relative;
 				margin: 0 auto;
 			}
-			#list{
-				width: 6000px;
+			
+			#list {
+				width: 6000px;/*足夠大即可*/
 				position: relative;
 			}
-			.list_img{
+			
+			.list_img {
 				width: 1000px;
 				height: 500px;
 				float: left;
 				background-size: cover;
 				background-position: 50% 50%;
 				background-repeat: no-repeat;
-				background-color: rgba(233,233,233,.9);
+				background-color: rgba(233, 233, 233, .9);
 			}
+			
 			#buttons {
 				z-index: 3;
 				height: 20px;
@@ -46,6 +53,7 @@
 				left: 50%;
 				margin-left: -40px;
 			}
+			
 			#buttons span {
 				cursor: pointer;
 				float: left;
@@ -56,10 +64,12 @@
 				background: #333;
 				margin-right: 5px;
 			}
+			
 			#buttons .button_on {
 				background: orange;
 			}
-			.arrow_div{
+			
+			.arrow_div {
 				cursor: pointer;
 				display: none;
 				width: 20%;
@@ -68,15 +78,19 @@
 				top: 0;
 				z-index: 2;
 			}
-			.arrow_div.left{
+			
+			.arrow_div.left {
 				left: 0px;
 			}
-			.arrow_div.right{
+			
+			.arrow_div.right {
 				right: 0px;
 			}
-			#container:hover .arrow_div{
+			
+			#container:hover .arrow_div {
 				display: block;
 			}
+			
 			.arrow {
 				line-height: 50px;
 				text-align: center;
@@ -89,13 +103,13 @@
 				right: 50%;
 				margin-top: -25px;
 				margin-right: -25px;
-				background-color: rgba(0,0,0,0.5);
+				background-color: rgba(0, 0, 0, 0.5);
 				color: #fff;
 				border-radius: 50%;
 			}
-			
 		</style>
 	</head>
+
 	<body>
 		<div style="margin-top: 20px;"></div>
 		<div id="container">
@@ -120,7 +134,24 @@
 				<a href="javascript:;" class="arrow" id="arrow_right">&gt;</a>
 			</div>
 		</div>
-		<script src="js/jquery-1.11.1.js"></script><!--为了兼容IE8选择低版本的jQuery-->
+		<script src="js/jquery-1.11.1.js"></script>
+		<!--为了兼容IE8选择低版本的jQuery-->
 		<script src="js/slideshow.js"></script>
+		<script>
+			$(document).ready(function() {
+				/*调用封装的函数*/
+				var picwidth=$('.list_img').innerWidth();
+				slideshow({
+					container: $('#container'),
+					list: $('#list'),
+					buttons: $('#buttons span'),
+					pre: $('#arrow_left'),
+					next: $('#arrow_right'),
+					pic_width: picwidth,
+					num: 4,
+				});
+			});
+		</script>
 	</body>
+
 </html>
